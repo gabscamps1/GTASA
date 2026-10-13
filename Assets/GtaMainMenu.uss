@@ -1,0 +1,205 @@
+/* ===================== BASE ===================== */
+.root {
+    flex-grow: 1;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(10, 10, 10);
+
+    /* Imagem de fundo (opcional):
+    background-image: url("project://database/Assets/UI/Images/bg.png");
+    -unity-background-scale-mode: scale-and-crop; */
+
+    /* Fonte estilo GTA (opcional):
+    -unity-font-definition: url("project://database/Assets/UI/Fonts/Pricedown.ttf"); */
+}
+
+.screen {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    flex-direction: row;
+}
+
+.hidden {
+    display: none;
+}
+
+.hint {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 24px;
+    -unity-text-align: middle-center;
+    font-size: 16px;
+    color: rgb(140, 140, 140);
+}
+
+.brightness-overlay {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgb(0, 0, 0);
+    opacity: 0;
+}
+
+/* ===================== TELA PRINCIPAL ===================== */
+.left-panel {
+    width: 45%;
+    padding: 90px 40px 60px 110px;
+    background-color: rgba(0, 0, 0, 0.55);
+}
+
+.title-block {
+    margin-bottom: 60px;
+}
+
+.title-small {
+    font-size: 28px;
+    -unity-font-style: bold;
+    letter-spacing: 8px;
+    color: rgb(235, 235, 235);
+    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.9);
+}
+
+.title-big {
+    font-size: 76px;
+    -unity-font-style: bold;
+    color: rgb(240, 165, 35);
+    text-shadow: 4px 4px 0 rgba(0, 0, 0, 0.9);
+}
+
+/* ===================== ITENS DE MENU (botões) ===================== */
+.menu-item {
+    height: 56px;
+    margin: 0 0 6px 0;
+    padding: 0 0 0 20px;
+    font-size: 30px;
+    -unity-font-style: bold;
+    -unity-text-align: middle-left;
+    color: rgb(205, 205, 205);
+    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.9);
+    background-color: rgba(0, 0, 0, 0);
+    border-width: 0;
+    border-radius: 0;
+    border-left-width: 6px;
+    border-left-color: rgba(0, 0, 0, 0);
+    transition-property: color, background-color, border-left-color;
+    transition-duration: 0.12s;
+}
+
+.menu-item:hover {
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.menu-item:focus {
+    color: rgb(255, 196, 60);
+    background-color: rgba(255, 255, 255, 0.08);
+    border-left-color: rgb(255, 170, 0);
+}
+
+.menu-item:active {
+    color: rgb(255, 255, 255);
+}
+
+/* ===================== TELA DE OPÇÕES ===================== */
+.options-screen {
+    justify-content: center;
+    align-items: center;
+}
+
+.options-panel {
+    width: 62%;
+    max-width: 900px;
+    padding: 40px 50px;
+    background-color: rgba(0, 0, 0, 0.65);
+}
+
+.screen-title {
+    font-size: 52px;
+    -unity-font-style: bold;
+    color: rgb(240, 165, 35);
+    text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.9);
+    margin-bottom: 30px;
+}
+
+.back-item {
+    margin-top: 20px;
+}
+
+.option-row {
+    flex-direction: row;
+    align-items: center;
+    height: 56px;
+    margin-bottom: 6px;
+    padding: 0 16px 0 20px;
+    background-color: rgba(0, 0, 0, 0);
+    border-left-width: 6px;
+    border-left-color: rgba(0, 0, 0, 0);
+    transition-property: background-color, border-left-color;
+    transition-duration: 0.12s;
+}
+
+.option-row:focus {
+    background-color: rgba(255, 255, 255, 0.08);
+    border-left-color: rgb(255, 170, 0);
+}
+
+.option-label {
+    flex-grow: 1;
+    font-size: 26px;
+    -unity-font-style: bold;
+    color: rgb(205, 205, 205);
+    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.9);
+}
+
+.option-row:focus .option-label {
+    color: rgb(255, 196, 60);
+}
+
+.option-value {
+    width: 220px;
+    -unity-text-align: middle-center;
+    font-size: 26px;
+    -unity-font-style: bold;
+    color: rgb(255, 255, 255);
+}
+
+/* Setas (-/+) clicáveis com o mouse */
+.arrow {
+    width: 40px;
+    height: 40px;
+    margin: 0;
+    padding: 0;
+    font-size: 28px;
+    -unity-font-style: bold;
+    color: rgb(200, 200, 200);
+    background-color: rgba(0, 0, 0, 0);
+    border-width: 0;
+}
+
+.arrow:hover {
+    color: rgb(255, 196, 60);
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.arrow:active {
+    color: rgb(255, 255, 255);
+}
+
+/* Barra de valor */
+.bar {
+    width: 260px;
+    height: 14px;
+    margin: 0 8px;
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+.bar-fill {
+    width: 0;
+    height: 100%;
+    background-color: rgb(240, 165, 35);
+}
