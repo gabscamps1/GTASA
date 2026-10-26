@@ -1,69 +1,52 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
-    <Style src="GtaMainMenu.uss" />
-
+    <Style src="project://database/Assets/GtaMainMenu.uss?fileID=7433441132597879392&amp;guid=ceeaf75a65f9ee946880c490cba52209&amp;type=3#GtaMainMenu"/>
     <ui:VisualElement name="root" class="root">
-
-        <!-- ============ TELA PRINCIPAL ============ -->
-        <ui:VisualElement name="main-screen" class="screen">
-            <ui:VisualElement class="left-panel">
+        <ui:VisualElement name="main-screen" class="screen" style="background-image: url(&quot;project://database/Assets/zl8jkk49bxh71.png?fileID=2800000&amp;guid=6c9ec0ec38e14094a987e15fae533cff&amp;type=3#zl8jkk49bxh71&quot;); display: flex; top: -1px; bottom: 2px; right: -1px; left: 2px;">
+            <ui:VisualElement class="left-panel" style="width: 1684px;">
                 <ui:VisualElement class="title-block">
-                    <ui:Label text="GRAND THEFT AUTO" class="title-small" />
-                    <ui:Label text="SAN ANDREAS" class="title-big" />
+                    <ui:Label text="Main Menu" name="Label" class="title-big" style="color: rgb(255, 255, 255);"/>
                 </ui:VisualElement>
-
-                <ui:Button name="btn-new-game" text="NOVO JOGO" class="menu-item" />
-                <ui:Button name="btn-load-game" text="CARREGAR JOGO" class="menu-item" />
-                <ui:Button name="btn-options" text="OPÇÕES" class="menu-item" />
-                <ui:Button name="btn-quit" text="SAIR" class="menu-item" />
+                <ui:Button name="btn-new-game" text="Start game" class="menu-item" style="-unity-text-align: middle-center; width: 1740px;"/>
+                <ui:Button name="btn-options" text="Options" class="menu-item" style="width: 1720px; -unity-text-align: middle-center;"/>
+                <ui:Button name="btn-quit" text="Quit game" class="menu-item" style="width: 1730px; -unity-text-align: middle-center;"/>
             </ui:VisualElement>
-
-            <ui:Label text="SETAS: NAVEGAR  |  ENTER: CONFIRMAR" class="hint" />
+            <ui:Label text="Arrows: Navigate | Enter: Confirm" name="Dicas" class="hint" style="color: rgb(255, 255, 255); font-size: 29px;"/>
         </ui:VisualElement>
-
-        <!-- ============ TELA DE OPÇÕES ============ -->
-        <ui:VisualElement name="options-screen" class="screen options-screen hidden">
-            <ui:VisualElement class="options-panel">
-                <ui:Label text="OPÇÕES" class="screen-title" />
-
-                <ui:VisualElement name="row-music" class="option-row" focusable="true" tabindex="0">
-                    <ui:Label text="VOLUME DA MÚSICA" class="option-label" />
-                    <ui:Button text="&lt;" class="arrow arrow-left" focusable="false" />
+        <ui:VisualElement name="options-screen" class="screen options-screen hidden" style="display: none; background-image: url(&quot;project://database/Assets/zl8jkk49bxh71.png?fileID=2800000&amp;guid=6c9ec0ec38e14094a987e15fae533cff&amp;type=3#zl8jkk49bxh71&quot;); visibility: visible;">
+            <ui:VisualElement class="options-panel" style="align-self: center; justify-content: space-evenly; align-items: stretch;">
+                <ui:Label text="Options" class="screen-title" style="font-size: 104px;"/>
+                <ui:VisualElement name="row-music" focusable="true" tabindex="0" class="option-row">
+                    <ui:Label text="MUSIC" class="option-label"/>
+                    <ui:Button text="&lt;" focusable="false" class="arrow arrow-left"/>
                     <ui:VisualElement class="bar">
-                        <ui:VisualElement class="bar-fill" />
+                        <ui:VisualElement class="bar-fill"/>
                     </ui:VisualElement>
-                    <ui:Button text="&gt;" class="arrow arrow-right" focusable="false" />
+                    <ui:Button text="&gt;" focusable="false" class="arrow arrow-right"/>
                 </ui:VisualElement>
-
-                <ui:VisualElement name="row-sfx" class="option-row" focusable="true" tabindex="0">
-                    <ui:Label text="VOLUME DOS EFEITOS" class="option-label" />
-                    <ui:Button text="&lt;" class="arrow arrow-left" focusable="false" />
+                <ui:VisualElement name="row-sfx" focusable="true" tabindex="0" class="option-row">
+                    <ui:Label text="SOUND EFFECTS" enable-rich-text="false" class="option-label"/>
+                    <ui:Button text="&lt;" focusable="false" class="arrow arrow-left"/>
                     <ui:VisualElement class="bar">
-                        <ui:VisualElement class="bar-fill" />
+                        <ui:VisualElement class="bar-fill"/>
                     </ui:VisualElement>
-                    <ui:Button text="&gt;" class="arrow arrow-right" focusable="false" />
+                    <ui:Button text="&gt;" focusable="false" class="arrow arrow-right"/>
                 </ui:VisualElement>
-
-                <ui:VisualElement name="row-brightness" class="option-row" focusable="true" tabindex="0">
-                    <ui:Label text="BRILHO" class="option-label" />
-                    <ui:Button text="&lt;" class="arrow arrow-left" focusable="false" />
+                <ui:VisualElement name="row-brightness" focusable="true" tabindex="0" class="option-row">
+                    <ui:Label text="BRIGHTNESS" class="option-label"/>
+                    <ui:Button text="&lt;" focusable="false" class="arrow arrow-left"/>
                     <ui:VisualElement class="bar">
-                        <ui:VisualElement class="bar-fill" />
+                        <ui:VisualElement class="bar-fill"/>
                     </ui:VisualElement>
-                    <ui:Button text="&gt;" class="arrow arrow-right" focusable="false" />
+                    <ui:Button text="&gt;" focusable="false" class="arrow arrow-right"/>
                 </ui:VisualElement>
-
-                <ui:VisualElement name="row-subtitles" class="option-row" focusable="true" tabindex="0">
-                    <ui:Label text="LEGENDAS" class="option-label" />
-                    <ui:Label name="subtitles-value" text="LIGADO" class="option-value" />
+                <ui:VisualElement name="row-subtitles" focusable="true" tabindex="0" class="option-row">
+                    <ui:Label text="SUBTITLES" class="option-label"/>
+                    <ui:Label name="subtitles-value" text="ON" class="option-value" style="-unity-font-definition: url(&quot;project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=2230732570650464555&amp;guid=e373d48a5d41bbf4193116317dc687c5&amp;type=3#NotInter-Regular&quot;);"/>
                 </ui:VisualElement>
-
-                <ui:Button name="btn-back" text="VOLTAR" class="menu-item back-item" />
+                <ui:Button name="btn-back" text="BACK" class="menu-item back-item"/>
             </ui:VisualElement>
-
-            <ui:Label text="SETAS: NAVEGAR / AJUSTAR  |  ENTER: CONFIRMAR  |  ESC: VOLTAR" class="hint" />
+            <ui:Label text="Arrows: Navigate | Enter: Confirm |  Esc: Back" class="hint"/>
         </ui:VisualElement>
-
-        <!-- Escurece a tela para simular o brilho (sempre por último) -->
-        <ui:VisualElement name="brightness-overlay" class="brightness-overlay" picking-mode="Ignore" />
+        <ui:VisualElement name="brightness-overlay" picking-mode="Ignore" class="brightness-overlay" style="opacity: 0; top: -3px; bottom: 4px; right: -3px; left: 4px; display: none;"/>
     </ui:VisualElement>
 </ui:UXML>

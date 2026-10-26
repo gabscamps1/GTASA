@@ -1,0 +1,31 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="GtaHud.uss" />
+
+    <ui:VisualElement name="hud-root" class="hud-root" picking-mode="Ignore">
+
+        <!-- Canto superior direito: vida, dinheiro, arma e munição -->
+        <ui:VisualElement class="hud-top-right" picking-mode="Ignore">
+            <ui:VisualElement class="hud-stats" picking-mode="Ignore">
+                <ui:VisualElement name="health-bar" class="health-bar" picking-mode="Ignore">
+                    <ui:VisualElement name="health-fill" class="health-fill" picking-mode="Ignore" />
+                </ui:VisualElement>
+                <ui:Label name="money-label" text="$0" class="money-label" picking-mode="Ignore" />
+            </ui:VisualElement>
+
+            <ui:VisualElement class="weapon-box" picking-mode="Ignore">
+                <ui:VisualElement name="weapon-icon" class="weapon-icon" picking-mode="Ignore">
+                    <!-- Aparece só enquanto a arma não tiver imagem -->
+                    <ui:Label name="weapon-name" text="ARMA" class="weapon-name" picking-mode="Ignore" />
+                </ui:VisualElement>
+                <ui:Label name="ammo-label" text="" class="ammo-label" picking-mode="Ignore" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <!-- Minimapa: coloque a imagem depois (campo no controlador ou SetMinimap) -->
+        <ui:VisualElement name="minimap" class="minimap" picking-mode="Ignore" />
+
+        <!-- Dica das teclas de teste -->
+        <ui:Label name="debug-hint" class="hud-hint" picking-mode="Ignore"
+                  text="J/K: vida -/+  |  M/N: dinheiro +/-  |  ESPAÇO: atirar  |  R: recarregar  |  Q/E: trocar arma" />
+    </ui:VisualElement>
+</ui:UXML>
