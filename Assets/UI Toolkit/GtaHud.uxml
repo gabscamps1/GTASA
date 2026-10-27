@@ -1,0 +1,24 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/GtaHud.uss?fileID=7433441132597879392&amp;guid=63d0f3ea058cc2c42826cbc51483406a&amp;type=3#GtaHud"/>
+    <ui:VisualElement name="hud-root" picking-mode="Ignore" class="hud-root" style="background-image: url(&quot;project://database/Assets/Images/gameScreenshot.jpg?fileID=2800000&amp;guid=e2ce2f87463e61d4ebb497f64632bb67&amp;type=3#gameScreenshot&quot;);">
+        <ui:VisualElement picking-mode="Ignore" class="hud-top-right">
+            <ui:VisualElement picking-mode="Ignore" class="weapon-box">
+                <ui:VisualElement name="weapon-icon" picking-mode="Ignore" class="weapon-icon" style="background-color: rgba(0, 0, 0, 0);">
+                    <ui:Label name="weapon-name" text="ARMA" picking-mode="Ignore" class="weapon-name" style="display: none;"/>
+                </ui:VisualElement>
+                <ui:Label name="ammo-label" text="" picking-mode="Ignore" class="ammo-label" style="-unity-font-definition: url(&quot;project://database/Assets/Fonts/arial-black.ttf?fileID=12800000&amp;guid=1c5d67e7f824a09418d9576ee6ab9c6b&amp;type=3#arial-black&quot;); top: -10px; height: 15px; width: 14px; display: flex; opacity: 1; -unity-text-align: upper-center;"/>
+            </ui:VisualElement>
+            <ui:VisualElement picking-mode="Ignore" class="hud-stats" style="left: 16px; top: -9px;">
+                <ui:VisualElement name="armor-bar" picking-mode="Ignore" class="health-bar" style="top: 9px;">
+                    <ui:VisualElement name="health-fill" picking-mode="Ignore" class="health-fill" style="background-color: rgb(229, 229, 229);"/>
+                </ui:VisualElement>
+                <ui:VisualElement name="health-bar" picking-mode="Ignore" class="health-bar" style="top: 15px;">
+                    <ui:VisualElement name="health-fill" picking-mode="Ignore" class="health-fill"/>
+                </ui:VisualElement>
+                <ui:Label name="money-label" text="$0" picking-mode="Ignore" class="money-label" style="-unity-font-definition: url(&quot;project://database/Assets/Fonts/pricedow.ttf?fileID=12800000&amp;guid=fd5234b7a75c191428d688c2d0789536&amp;type=3#pricedow&quot;); text-shadow: 0 0 0 rgba(0, 0, 0, 0.95); -unity-text-outline-width: 2px; -unity-text-outline-color: rgb(0, 0, 0); font-size: 57px;"/>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="minimap" picking-mode="Ignore" class="minimap" style="background-color: rgba(30, 40, 30, 0); border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0;"/>
+        <ui:Label name="debug-hint" picking-mode="Ignore" text="J/K: Gain Health/Lose Health  |  M/N: Gain/Lose Money  |  Space: Shoot |  r: Reload  |  Q/E: Change weapon" class="hud-hint" style="font-size: 22px; color: rgb(255, 255, 255);"/>
+    </ui:VisualElement>
+</ui:UXML>

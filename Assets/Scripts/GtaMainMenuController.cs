@@ -32,6 +32,7 @@ public class GtaMainMenuController : MonoBehaviour
 
     private VisualElement _root, _mainScreen, _optionsScreen, _overlay;
     private bool _silentFocus = true;
+    private bool _optionsOpen;
 
     private void Start()
     {
@@ -39,6 +40,16 @@ public class GtaMainMenuController : MonoBehaviour
         _mainScreen = _root.Q("main-screen");
         _optionsScreen = _root.Q("options-screen");
         _overlay = _root.Q("brightness-overlay");
+
+        if (_mainScreen == null || _optionsScreen == null)
+        {
+            Debug.LogError("GtaMainMenu: 'main-screen' ou 'options-screen' não encontrados no UXML.");
+            return;
+        }
+
+        // Estado inicial (definido por código para não depender de estilos inline do UI Builder)
+        SetScreenVisible(_mainScreen, true);
+        SetScreenVisible(_optionsScreen, false);
 
         // Menu principal
         BindButton("btn-new-game", OnNewGame);
@@ -61,17 +72,25 @@ public class GtaMainMenuController : MonoBehaviour
 
     // ---------------------------------------------------------------- Telas
 
+    // Usa style.display (inline) + classe "hidden", assim funciona mesmo que o
+    // UXML tenha um "display" definido no UI Builder.
+    private static void SetScreenVisible(VisualElement screen, bool visible)
+    {
+        screen.EnableInClassList("hidden", !visible);
+        screen.style.display = visible ? DisplayStyle.Flex : DisplayStyle.None;
+    }
+
     private void ShowScreen(VisualElement target, string focusName)
     {
-        _mainScreen.AddToClassList("hidden");
-        _optionsScreen.AddToClassList("hidden");
-        target.RemoveFromClassList("hidden");
+        SetScreenVisible(_mainScreen, target == _mainScreen);
+        SetScreenVisible(_optionsScreen, target == _optionsScreen);
+        _optionsOpen = target == _optionsScreen;
         FocusSilently(_root.Q(focusName));
     }
 
     private void GoBack()
     {
-        if (_optionsScreen.ClassListContains("hidden")) return;
+        if (!_optionsOpen) return;
 
         Play(backClip);
         PlayerPrefs.Save();
@@ -114,6 +133,13 @@ public class GtaMainMenuController : MonoBehaviour
     private void BindButton(string name, Action action, bool playConfirm = true)
     {
         var button = _root.Q<Button>(name);
+        if (button == null)
+        {
+            // Botão removido do UXML (ex.: "Carregar Jogo"): ignora em vez de quebrar o menu.
+            Debug.LogWarning($"GtaMainMenu: botão '{name}' não existe no UXML e foi ignorado.");
+            return;
+        }
+
         RegisterFeedback(button);
         button.clicked += () =>
         {
@@ -166,7 +192,7 @@ public class GtaMainMenuController : MonoBehaviour
 
         void Refresh()
         {
-            label.text = on ? "LIGADO" : "DESLIGADO";
+            label.text = on ? "ON" : "OFF";
             PlayerPrefs.SetInt(prefsKey, on ? 1 : 0);
             onChanged?.Invoke(on);
         }
@@ -212,7 +238,7 @@ public class GtaMainMenuController : MonoBehaviour
     private void ApplyBrightness(int step)
     {
         // 10 = tela normal; valores menores escurecem
-        _overlay.style.opacity = (10 - step) / 10f * 0.6f;
+        if (_overlay != null) _overlay.style.opacity = (10 - step) / 10f * 0.6f;
     }
 
     private void SetMixerVolume(string parameter, int step)
@@ -235,6 +261,8 @@ public class GtaMainMenuController : MonoBehaviour
     // Foca um elemento sem tocar o som de navegação
     private void FocusSilently(VisualElement element)
     {
+        if (element == null) return;
+
         _silentFocus = true;
         _root.schedule.Execute(() =>
         {
